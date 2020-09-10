@@ -2,7 +2,7 @@
 Projeto desenvolvido na disciplina de Programação Orientada a Objetos.
 
 ## Objetivo
-Desenvolver um programa desktop para exibir gráfico de cotações de ações negociadas na Bolsa de Valores Brasileira ([B3](http://www.b3.com.br/pt_br/)).
+Desenvolver um programa desktop, em Java, para exibir gráfico de cotações de ações negociadas na Bolsa de Valores Brasileira ([B3](http://www.b3.com.br/pt_br/)).
 
 ## Principais requisitos
 - Ler os dados de cotações de uma determinada ação, que estejam armazenados em um arquivo `.csv`. Os dados podem ser obtidos do [Yahoo! Finanças](https://br.financas.yahoo.com/). Todos os dados de cotações deverão estar armazenados no mesmo diretório.
