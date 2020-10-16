@@ -5,6 +5,8 @@
  */
 package ui;
 
+import javax.swing.JFileChooser;
+
 /**
  *
  * @author gabriel
@@ -46,8 +48,18 @@ public class JConfiguracoes extends javax.swing.JInternalFrame {
         jtfDiretorio.setEditable(false);
 
         jbEscolherDiretorio.setText("Escolher diretório ...");
+        jbEscolherDiretorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEscolherDiretorioActionPerformed(evt);
+            }
+        });
 
         jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalvarActionPerformed(evt);
+            }
+        });
 
         jbCancelar.setText("Cancelar");
         jbCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,10 +106,35 @@ public class JConfiguracoes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarActionPerformed
-        // TODO add your handling code here:
+        jtfDiretorio.setText(diretorioAnterior);
         this.setVisible(false);
     }//GEN-LAST:event_jbCancelarActionPerformed
 
+    private void jbEscolherDiretorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEscolherDiretorioActionPerformed
+        // guardo o diretorio anterior
+        diretorioAnterior = jtfDiretorio.getText();
+        
+        int retorno = jfcDiretorio.showOpenDialog(this);
+        
+        if(retorno == JFileChooser.APPROVE_OPTION ){
+            jtfDiretorio.setText(jfcDiretorio.getSelectedFile().getAbsolutePath() + "/");
+        } else {
+            jtfDiretorio.setText(diretorioAnterior);
+        }
+        
+    }//GEN-LAST:event_jbEscolherDiretorioActionPerformed
+
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
+        this.setVisible(false);        
+    }//GEN-LAST:event_jbSalvarActionPerformed
+
+    public String getDiretorioAtual(){
+        return jtfDiretorio.getText();
+    }
+    
+    
+    // Variaveis - atributos
+    private String diretorioAnterior;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbCancelar;

@@ -5,6 +5,8 @@
  */
 package ui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author gabriel
@@ -16,6 +18,7 @@ public class JAcoes extends javax.swing.JFrame {
      */
     public JAcoes() {
         initComponents();
+        this.setSize(800, 600);
     }
 
     /**
@@ -49,6 +52,11 @@ public class JAcoes extends javax.swing.JFrame {
         jmiBaseAtivos.setMnemonic('b');
         jmiBaseAtivos.setText("Base de ativos");
         jmiBaseAtivos.setToolTipText("");
+        jmiBaseAtivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiBaseAtivosActionPerformed(evt);
+            }
+        });
         jmArquivo.add(jmiBaseAtivos);
 
         jmiCarteiras.setMnemonic('c');
@@ -123,6 +131,23 @@ public class JAcoes extends javax.swing.JFrame {
         jConfiguracoes.setVisible(true);
     }//GEN-LAST:event_jmiConfiguracoesActionPerformed
 
+    private void jmiBaseAtivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBaseAtivosActionPerformed
+        if(jConfiguracoes == null || jConfiguracoes.getDiretorioAtual() == null){
+            JOptionPane.showMessageDialog(this,
+                    "Não foi informado o diretório em que estão os ativos.",
+                    "Erro ao acessar base de ativos", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
+        if(jBaseAtivos == null){
+            jBaseAtivos = new JBaseAtivos();
+            jdpArea.add(jBaseAtivos);
+        }
+        jBaseAtivos.setDiretorio(jConfiguracoes.getDiretorioAtual());
+        jBaseAtivos.setVisible(true);
+    }//GEN-LAST:event_jmiBaseAtivosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -160,6 +185,7 @@ public class JAcoes extends javax.swing.JFrame {
 
     // Variaveis
     private JConfiguracoes jConfiguracoes;
+    private JBaseAtivos jBaseAtivos;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu.Separator jSeparator1;
